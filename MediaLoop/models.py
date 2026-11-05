@@ -1,4 +1,4 @@
-from MediaLoop.db import Base
+from db import Base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Text,DateTime
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import DeclarativeBase, relationship
@@ -20,7 +20,7 @@ class Posts(Base):
     url = Column(String, nullable = False)
     file_type  = Column(String, nullable = False)
     file_name = Column(String, nullable = False)
-    created_at = Column(DateTime, default = datetime.utcnow())
+    created_at = Column(DateTime, default = datetime.utcnow)
     owner_id = Column(Integer, ForeignKey('users.id'), nullable = False)
 
 
@@ -34,7 +34,7 @@ class Users(Base):
     email = Column(String, unique=True, nullable = False)
     hash_password = Column(String, nullable = False)
     role = Column(String, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow())
+    created_at = Column(DateTime, default=datetime.utcnow)
     
 
 

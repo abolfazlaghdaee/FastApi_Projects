@@ -2,7 +2,7 @@ from typing import Annotated
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 from fastapi import Depends, APIRouter, HTTPException, Path
-import models
+import models as models
 from models import Users, RevokedToken
 from models import RevokedToken
 from db import  sessionlocal
