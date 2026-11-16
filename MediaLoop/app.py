@@ -18,7 +18,16 @@ app.include_router(posts.router)
 
 # Web frontend (plain HTML/CSS/JS) served from the same origin as the API.
 FRONTEND_DIR = Path(__file__).parent / "frontend"
-app.mount("/ui", StaticFiles(directory=FRONTEND_DIR, html=True), name="ui")
+
+
+class NoCacheStaticFiles(StaticFiles):
+    async def get_response(self, path, scope):
+        response = await super().get_response(path, scope)
+        response.headers["Cache-Control"] = "no-cache"
+        return response
+
+
+app.mount("/ui", NoCacheStaticFiles(directory=FRONTEND_DIR, html=True), name="ui")
 
 
 @app.get("/", include_in_schema=False)

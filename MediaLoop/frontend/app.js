@@ -110,7 +110,7 @@ function renderAuth() {
   let mode = 'login';
   const draw = () => {
     app.innerHTML = `<div class="auth">${themeSwitch()}<div class="auth-box">
-      <div class="logo">${LOGO}<span>Auralink</span></div>
+      <div class="logo">${LOGO}<span>MediaLoop</span></div>
       <h1>Photos and videos, shared.</h1>
       <p>Log in to see what everyone posted, or create an account to add your own.</p>
       <div class="panel">
@@ -160,14 +160,14 @@ function shell(active) {
     .map(([k, l, i]) => `<a href="#/${k}" ${k === active ? 'aria-current="page"' : ''}>${i}<span>${l}</span></a>`).join('');
   app.innerHTML = `<div class="shell">
     <aside class="rail">
-      <a class="logo" href="#/feed">${LOGO}<span>Auralink</span></a>
+      <a class="logo" href="#/feed">${LOGO}<span>MediaLoop</span></a>
       <nav aria-label="Main">${nav}</nav>
       <div class="rail-foot">
         <div class="me">${avatar(u.user_name)}<div><b>${esc(u.user_name)}</b><small>${esc(u.email)}</small></div></div>
         <div class="row">${themeSwitch()}<button class="btn ghost" data-logout style="flex:1">${ICON.logout}Log out</button></div>
       </div>
     </aside>
-    <div><header class="topbar"><a class="logo" href="#/feed">${LOGO}<span>Auralink</span></a>${themeSwitch()}</header><main class="main" id="view"></main></div>
+    <div><header class="topbar"><a class="logo" href="#/feed">${LOGO}<span>MediaLoop</span></a>${themeSwitch()}</header><main class="main" id="view"></main></div>
   </div>`;
   return $('#view');
 }
@@ -184,7 +184,7 @@ function card(p) {
     ${media}${p.caption ? `<p class="cap">${esc(p.caption)}</p>` : ''}</article>`;
 }
 async function renderFeed(v) {
-  v.innerHTML = head('Feed', 'The latest from everyone on Auralink.') + `<div class="chips" id="chips"></div><div class="grid" id="grid">${'<div class="skel"></div>'.repeat(6)}</div>`;
+  v.innerHTML = head('Feed', 'The latest from everyone on MediaLoop.') + `<div class="chips" id="chips"></div><div class="grid" id="grid">${'<div class="skel"></div>'.repeat(6)}</div>`;
   const grid = $('#grid'); let posts, filter = 'all';
   try { posts = (await api('/posts/feed', { auth: false })).posts; }
   catch (e) { grid.innerHTML = `<div class="empty"><h2>Couldn’t load the feed</h2><p>${esc(e.message)}</p><button class="btn" onclick="route()">Try again</button></div>`; return; }

@@ -4,7 +4,7 @@ import requests
 BASE_URL = "http://127.0.0.1:8000"
 
 st.set_page_config(
-    page_title="Auralink",
+    page_title="MediaLoop",
     page_icon="✨",
     layout="wide",
     initial_sidebar_state="auto",
@@ -331,7 +331,7 @@ def auth_page():
     st.markdown(
         """
         <div class="brand-hero">
-            <div class="brand-title">✨ Auralink</div>
+            <div class="brand-title">✨ MediaLoop</div>
             <div class="brand-subtitle">Share your moments. Connect with your people.</div>
         </div>
         """,
